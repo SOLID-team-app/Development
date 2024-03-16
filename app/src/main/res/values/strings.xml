@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CooktifyApp</string>
+    <string name="onboard">Halo, Selamat Datang!
+        Silahkan siapkan akun Anda terlebih dahulu. </string>
+    <string name="Login_button">Login</string>
+    <string name="Register_button">Register</string>
+    <string name="account_info">Atau Login Pakai</string>
+    <string name="Login_info">Selamat Datang, </string>
+    <string name="Login_info2">Silahkan Login Terlebih Dahulu</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+</resources>
