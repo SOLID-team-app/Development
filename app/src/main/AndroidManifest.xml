@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CooktifyApp"
         tools:targetApi="31">
         <activity
-            android:name=".Favorite"
+            android:name=".favorite.Favorite"
             android:exported="false" />
         <activity
             android:name=".onBoarding.Register"
