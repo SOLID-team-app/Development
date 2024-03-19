@@ -58,8 +58,6 @@
             android:text="@string/Register_info2"
             android:textColor="@color/white"
             android:textSize="25sp"
-
-
             />
 
 
