@@ -8,5 +8,8 @@
     <string name="Login_info">Selamat Datang, </string>
     <string name="Login_info2">Silahkan Login Terlebih Dahulu</string>
     <string name="hint_email">Email</string>
+    <string name="hint_name">Name</string>
     <string name="hint_password">Password</string>
+    <string name="Register_info">Belum Punya Akun?</string>
+    <string name="Register_info2">Lengkap Data Dirimu\nDibawah ini Ya</string>
 </resources>

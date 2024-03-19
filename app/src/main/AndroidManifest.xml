@@ -13,10 +13,13 @@
         android:theme="@style/Theme.CooktifyApp"
         tools:targetApi="31">
         <activity
-            android:name=".Login"
+            android:name=".onBoarding.Register"
             android:exported="false" />
         <activity
-            android:name=".OnBoarding"
+            android:name=".onBoarding.Login"
+            android:exported="false" />
+        <activity
+            android:name=".onBoarding.OnBoarding"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
