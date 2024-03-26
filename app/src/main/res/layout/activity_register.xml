@@ -8,7 +8,7 @@
     tools:context=".onBoarding.Register">
 
     <ImageView
-        android:id="@+id/background"
+        android:id="@+id/ivBg"
         android:layout_width="410dp"
         android:layout_height="537dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/background_1" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/ivLogo"
         android:layout_width="143dp"
         android:layout_height="108dp"
         android:layout_marginStart="8dp"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/background">
+        app:layout_constraintTop_toTopOf="@+id/ivBg">
 
         <TextView
             android:layout_width="match_parent"
@@ -64,75 +64,86 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Text_Nama"
+        android:id="@+id/tfNama"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="380dp"
         android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
         >
         <EditText
+            android:id="@+id/etNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_name"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:drawableStart="@drawable/name"
+            android:drawablePadding="10dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Text_email"
+        android:id="@+id/tfEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="380dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
-        app:layout_constraintTop_toBottomOf="@id/Text_Nama"
+        app:layout_constraintTop_toBottomOf="@id/tfNama"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp">
         <EditText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_email"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="10dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/Text_password"
+        android:id="@+id/tfPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="380dp"
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
-        app:layout_constraintTop_toBottomOf="@id/Text_email"
+        app:endIconMode="password_toggle"
+        app:layout_constraintTop_toBottomOf="@id/tfEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp">
+
         <EditText
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_password"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="10dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,7 +155,7 @@
         android:text="@string/Register_button"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_bold"
-        app:layout_constraintTop_toBottomOf="@id/Text_password"
+        app:layout_constraintTop_toBottomOf="@id/tfPassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/orange_light"

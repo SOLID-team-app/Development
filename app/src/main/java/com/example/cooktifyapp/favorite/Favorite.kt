@@ -1,12 +1,13 @@
-package com.example.cooktifyapp.home
+package com.example.cooktifyapp.favorite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.cooktifyapp.R
 
-class Home : AppCompatActivity() {
+class Favorite : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_favorite)
+
     }
 }
