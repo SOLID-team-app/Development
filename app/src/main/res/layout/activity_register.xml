@@ -71,7 +71,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
@@ -79,6 +78,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_name"
             android:inputType="text"
@@ -95,7 +95,6 @@
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
         app:layout_constraintTop_toBottomOf="@id/Text_Nama"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,6 +102,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_email"
             android:inputType="text"
@@ -119,7 +119,6 @@
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
         app:layout_constraintTop_toBottomOf="@id/Text_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +126,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_password"
             android:inputType="text"
