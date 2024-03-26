@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.home
+package com.example.cooktifyapp.navigation.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
