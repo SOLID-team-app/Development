@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/home_bg" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottombar"
+        android:id="@+id/bottomBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,11 +31,11 @@
 
     
     <fragment
-        android:id="@+id/fragmet_Dashboard"
+        android:id="@+id/fragmentDashboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:layout_constraintBottom_toTopOf="@id/bottombar"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
