@@ -8,7 +8,7 @@
     tools:context=".onBoarding.Login">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/ivLogo"
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -17,7 +17,9 @@
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_home" />
+        app:srcCompat="@drawable/logo_home"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -37,7 +39,9 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4">
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        android:alpha="0"
+        tools:alpha="100">
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,10 +73,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/loginLayout">
+        app:layout_constraintTop_toBottomOf="@id/loginLayout"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
-            android:id="@+id/ed_login"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -100,10 +106,12 @@
         app:layout_constraintTop_toBottomOf="@id/tf_username"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0">
+        app:layout_constraintHorizontal_bias="0.0"
+        android:alpha="0"
+        tools:alpha="100">
 
         <EditText
-            android:id="@+id/ed_password"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -120,8 +128,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-
-        android:id="@+id/button2"
+        android:id="@+id/btnLogin"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -134,10 +141,12 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tf_password" />
+        app:layout_constraintTop_toBottomOf="@id/tf_password"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <TextView
-        android:id="@+id/textlogin"
+        android:id="@+id/tvAtau"
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,18 +155,22 @@
         android:text="@string/account_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        android:alpha="0"
+        tools:alpha="100"/>
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/ivGoogle"
         android:layout_width="95dp"
         android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textlogin"
+        app:layout_constraintTop_toBottomOf="@+id/tvAtau"
         android:background="@color/white"
-        app:srcCompat="@drawable/google" />
+        app:srcCompat="@drawable/google"
+        android:alpha="0"
+        tools:alpha="100"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
