@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.cooktifyapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.cooktifyapp"
