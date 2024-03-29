@@ -29,7 +29,7 @@ class Login : AppCompatActivity() {
         }.start()
 
         val text = ObjectAnimator.ofFloat(binding.loginLayout, View.ALPHA, 1f).setDuration(800)
-        val username = ObjectAnimator.ofFloat(binding.tfUsername, View.ALPHA, 1f).setDuration(800)
+        val username = ObjectAnimator.ofFloat(binding.tfEmail, View.ALPHA, 1f).setDuration(800)
         val password = ObjectAnimator.ofFloat(binding.tfPassword, View.ALPHA, 1f).setDuration(800)
         val login = ObjectAnimator.ofFloat(binding.btnLogin, View.ALPHA, 1f).setDuration(800)
         val tvAtau = ObjectAnimator.ofFloat(binding.tvAtau, View.ALPHA, 1f).setDuration(800)
