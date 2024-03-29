@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/background_1" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/ivLogo"
         android:layout_width="143dp"
         android:layout_height="108dp"
         android:layout_marginStart="8dp"
@@ -71,7 +71,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout"
@@ -79,12 +78,15 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_name"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:drawableStart="@drawable/name"
+            android:drawablePadding="10dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +97,6 @@
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
         app:layout_constraintTop_toBottomOf="@id/Text_Nama"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,12 +104,15 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_email"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="10dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,20 +123,24 @@
         android:layout_height="58dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/background_text"
+        app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@id/Text_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp">
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_text"
             android:ems="10"
             android:hint="@string/hint_password"
             android:inputType="text"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="10dp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
