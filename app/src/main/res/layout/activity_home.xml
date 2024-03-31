@@ -18,18 +18,18 @@
         app:layout_constraintVertical_bias="0.452"
         app:srcCompat="@drawable/home_bg" />
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="#B7EE9322"
-        app:menu="@menu/bottom_nav_menu"
-        />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
-    
     <fragment
         android:id="@+id/fragmentDashboard"
         android:layout_width="match_parent"
