@@ -22,7 +22,7 @@
         tools:alpha="100"/>
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivBg"
         android:layout_width="406dp"
         android:layout_height="515dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,7 +39,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/ivBg"
         android:alpha="0"
         tools:alpha="100">
 
@@ -64,7 +64,7 @@
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_username"
+        android:id="@+id/tfEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -96,14 +96,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_password"
+        android:id="@+id/tfPassword"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textColorHint="@color/black"
         app:endIconMode="password_toggle"
-        app:layout_constraintTop_toBottomOf="@id/tf_username"
+        app:layout_constraintTop_toBottomOf="@id/tfEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -141,7 +141,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tf_password"
+        app:layout_constraintTop_toBottomOf="@id/tfPassword"
         android:alpha="0"
         tools:alpha="100"/>
 
@@ -163,7 +163,7 @@
         android:id="@+id/ivGoogle"
         android:layout_width="95dp"
         android:layout_height="90dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAtau"
