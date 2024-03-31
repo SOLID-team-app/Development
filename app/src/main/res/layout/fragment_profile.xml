@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".navigation.profile.ProfileFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="10dp"
+        app:cardBackgroundColor="@color/orange">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivPhotoUser"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/baseline_account_circle_24" />
+
+            <TextView
+                android:id="@+id/tvNamaUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/ivPhotoUser"
+                android:text="@string/hint_name"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvEmailUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/ivPhotoUser"
+                android:layout_below="@+id/tvNamaUser"
+                android:layout_centerVertical="true"
+                android:text="@string/hint_email"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvKeluar"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:text="@string/keluar"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:drawablePadding="10dp"
+                app:drawableStartCompat="@drawable/logout" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp"
+        app:cardBackgroundColor="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <TextView
+                    android:id="@+id/tvInfoPribadi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/info_pribadi"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:drawablePadding="10dp"
+                    app:drawableStartCompat="@drawable/name" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <TextView
+                    android:id="@+id/tvFavorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/favorite_recipes"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:drawablePadding="10dp"
+                    app:drawableStartCompat="@drawable/favorite" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <TextView
+                    android:id="@+id/tvPengaturan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/pengaturan"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:drawablePadding="10dp"
+                    app:drawableStartCompat="@drawable/setting" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
+
+                <TextView
+                    android:id="@+id/tvTentang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/tentang_kami"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:drawablePadding="10dp"
+                    app:drawableStartCompat="@drawable/tulisan_cooktify" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

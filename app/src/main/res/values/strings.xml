@@ -23,4 +23,9 @@
     <string name="start">Start</string>
     <string name="input_camera">CAMERA</string>
     <string name="input_galery">GALERY</string>
+    <string name="keluar">Keluar</string>
+    <string name="info_pribadi">Info Pribadi</string>
+    <string name="favorite_recipes">Favorite Recipes</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="tentang_kami">Tentang Kami</string>
 </resources>
