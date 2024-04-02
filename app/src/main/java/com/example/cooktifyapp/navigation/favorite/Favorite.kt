@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.favorite
+package com.example.cooktifyapp.navigation.favorite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

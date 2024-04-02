@@ -118,7 +118,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.649"
         app:layout_constraintStart_toEndOf="@+id/ivMenu3"
-        app:layout_constraintTop_toBottomOf="@+id/ivMenu2" />
+        app:layout_constraintTop_toBottomOf="@+id/ivMenu2"
+        app:layout_constraintVertical_bias="1.0" />
 
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_width="65dp"
+        android:layout_height="60dp"
+        android:src="@drawable/arrowh_right"
+        app:layout_constraintBottom_toBottomOf="@id/ivSeeAll"
+        app:layout_constraintEnd_toEndOf="@id/ivSeeAll"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@id/ivSeeAll"
+        app:layout_constraintTop_toTopOf="@id/ivSeeAll"
+        app:layout_constraintVertical_bias="0.4" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="15sp"
+        android:fontFamily="@font/poppins_bold"
+        app:layout_constraintTop_toBottomOf="@id/arrow"
+        app:layout_constraintStart_toStartOf="@id/arrow"
+        app:layout_constraintEnd_toEndOf="@id/arrow"
+        app:layout_constraintBottom_toBottomOf="@id/ivSeeAll"
+        android:text="@string/seeall"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
