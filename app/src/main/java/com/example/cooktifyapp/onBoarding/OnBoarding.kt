@@ -20,7 +20,7 @@ class OnBoarding : AppCompatActivity() {
 
     private fun playAnimation() {
 
-        ObjectAnimator.ofFloat(binding.ivGambar, View.TRANSLATION_X, -50f, 50f).apply {
+        ObjectAnimator.ofFloat(binding.ivLogo, View.TRANSLATION_X, -50f, 50f).apply {
             duration = 6000
             repeatCount = ObjectAnimator.INFINITE
             repeatMode = ObjectAnimator.REVERSE
@@ -29,7 +29,7 @@ class OnBoarding : AppCompatActivity() {
         val text = ObjectAnimator.ofFloat(binding.tvDesc, View.ALPHA, 1f).setDuration(800)
         val layout = ObjectAnimator.ofFloat(binding.llButton, View.ALPHA, 1f).setDuration(800)
         val tvAtau = ObjectAnimator.ofFloat(binding.tvAtau, View.ALPHA, 1f).setDuration(800)
-        val logo = ObjectAnimator.ofFloat(binding.logoGoogle, View.ALPHA, 1f).setDuration(800)
+        val logo = ObjectAnimator.ofFloat(binding.ivGoogle, View.ALPHA, 1f).setDuration(800)
 
         AnimatorSet().apply {
             playSequentially(

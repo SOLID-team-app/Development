@@ -23,7 +23,4 @@
     <string name="start">Start</string>
     <string name="input_camera">CAMERA</string>
     <string name="input_galery">GALERY</string>
-    <string name="items_name">Nama Bahan</string>
-    <string name="fav_name">Nama Makanan Fav</string>
-    <string name="favorite">Favorite</string>
 </resources>

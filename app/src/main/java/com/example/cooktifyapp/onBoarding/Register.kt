@@ -28,10 +28,10 @@ class Register : AppCompatActivity() {
         }.start()
 
         val text = ObjectAnimator.ofFloat(binding.linearLayout, View.ALPHA, 1f).setDuration(800)
-        val nama = ObjectAnimator.ofFloat(binding.TextNama, View.ALPHA, 1f).setDuration(800)
-        val email = ObjectAnimator.ofFloat(binding.TextEmail, View.ALPHA, 1f).setDuration(800)
-        val password = ObjectAnimator.ofFloat(binding.TextPassword, View.ALPHA, 1f).setDuration(800)
-        val register = ObjectAnimator.ofFloat(binding.buttonRegister, View.ALPHA, 1f).setDuration(800)
+        val nama = ObjectAnimator.ofFloat(binding.tfNama, View.ALPHA, 1f).setDuration(800)
+        val email = ObjectAnimator.ofFloat(binding.tfEmail, View.ALPHA, 1f).setDuration(800)
+        val password = ObjectAnimator.ofFloat(binding.tfPassword, View.ALPHA, 1f).setDuration(800)
+        val register = ObjectAnimator.ofFloat(binding.btnRegis, View.ALPHA, 1f).setDuration(800)
 
         AnimatorSet().apply {
             playSequentially(
