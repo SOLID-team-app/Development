@@ -1,4 +1,3 @@
-package com.example.cooktifyapp.navigation.inputImages
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
