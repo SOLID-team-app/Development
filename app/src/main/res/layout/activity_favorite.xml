@@ -17,7 +17,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="@string/favorite">
+            app:title="@string/Recipes">
 
             <ImageView
                 android:layout_width="wrap_content"
