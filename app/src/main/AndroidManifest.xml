@@ -13,9 +13,6 @@
         android:theme="@style/Theme.CooktifyApp"
         tools:targetApi="31">
         <activity
-            android:name=".detail.Detail"
-            android:exported="false" />
-        <activity
             android:name=".onBoarding.Register"
             android:exported="false" />
         <activity
