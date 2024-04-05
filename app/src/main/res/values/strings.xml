@@ -43,4 +43,8 @@
     <string name="cara_membuat">Cara Membuat</string>
     <string name="set_timer">Set Timer</string>
     <string name="lorem_time">00:00</string>
+    <string name="home">Home</string>
+    <string name="favorite_fragment">Favorite</string>
+    <string name="profil">Profile</string>
+    <string name="Input">Input</string>
 </resources>

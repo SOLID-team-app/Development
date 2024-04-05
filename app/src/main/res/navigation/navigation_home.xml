@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.cooktifyapp.view.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home"
+        />
+
+    <fragment
+        android:id="@+id/nav_camera"
+        android:name="InputFragment"
+        android:label="@string/Input"
+        tools:layout="@layout/fragment_input"
+
+        />
+
+    <fragment
+        android:id="@+id/nav_favorite"
+        android:name="com.example.cooktifyapp.view.navigation.favorite.FavoriteFragment"
+        android:label="@string/favorite_fragment"
+        tools:layout="@layout/fragment_favorite"
+        />
+
+    <fragment
+        android:id="@+id/nav_profil"
+        android:name="com.example.cooktifyapp.view.navigation.profile.ProfileFragment"
+        android:label="@string/profil"
+        tools:layout="@layout/fragment_profile"
+        />
+
+</navigation>
