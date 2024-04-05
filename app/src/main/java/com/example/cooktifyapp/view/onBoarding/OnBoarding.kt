@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.onBoarding
+package com.example.cooktifyapp.view.onBoarding
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator

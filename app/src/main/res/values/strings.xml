@@ -35,4 +35,12 @@
     <string name="sounds">Sounds</string>
     <string name="Logout">Logout</string>
     <string name="Recipes">Recipes</string>
+    <string name="nama_menu">Nama Menu</string>
+    <string name="bahan_utama">Bahan Utama:</string>
+    <string name="bahan_tambahan">Bahan Tambahan:</string>
+    <string name="cook_time">Cook Time</string>
+    <string name="resep">Resep</string>
+    <string name="cara_membuat">Cara Membuat</string>
+    <string name="set_timer">Set Timer</string>
+    <string name="lorem_time">00:00</string>
 </resources>

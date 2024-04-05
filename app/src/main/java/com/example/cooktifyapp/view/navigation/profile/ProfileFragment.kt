@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.navigation.profile
+package com.example.cooktifyapp.view.navigation.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

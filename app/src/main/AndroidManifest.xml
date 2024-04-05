@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <application
         android:allowBackup="true"
@@ -11,25 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CooktifyApp"
-        tools:targetApi="31">
+        tools:targetApi="31" >
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name=".view.cooktime.CookTimeActivity"
             android:exported="false" />
         <activity
-            android:name=".detail.Detail"
+            android:name=".view.settings.SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.detail.Detail"
             android:exported="false" />
         <activity
-            android:name=".onBoarding.Register"
+            android:name=".view.onBoarding.Register"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.navigation.home.Home"
+            android:exported="true" />
+        <activity
+            android:name=".view.onBoarding.OnBoarding"
             android:exported="false" />
         <activity
-            android:name=".onBoarding.OnBoarding"
-            android:exported="false" />
-        <activity
-            android:name=".onBoarding.Login"
-            android:exported="true">
+            android:name=".view.onBoarding.Login"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

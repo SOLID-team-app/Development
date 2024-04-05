@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.detail.Detail">
+    tools:context=".view.cooktime.CookTimeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,37 +59,17 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="@string/bahan_utama"
+                    android:text="@string/cara_membuat"
                     android:fontFamily="@font/poppins_bold"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tvBahanUtama"
+                    android:id="@+id/tvCaraMembuat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:text="@string/bahan_utama"
-                    android:fontFamily="@font/poppins"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/bahan_tambahan"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/tvBahanTambahan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/bahan_tambahan"
+                    android:text="@string/cara_membuat"
                     android:fontFamily="@font/poppins"
                     android:textSize="14sp" />
 
@@ -99,8 +79,22 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnTimer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/lorem_time"
+        android:fontFamily="@font/poppins_bold"
+        android:textSize="20sp"
+        android:drawablePadding="10dp"
+        app:drawableStartCompat="@drawable/baseline_access_time_24" />
+
     <Button
-        android:id="@+id/btnCookTime"
+        android:id="@+id/btnTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -109,7 +103,6 @@
         android:backgroundTint="@color/green"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/cook_time"
-        android:drawableEnd="@drawable/arrowh_right_putih"/>
+        android:text="@string/set_timer" />
 
 </RelativeLayout>

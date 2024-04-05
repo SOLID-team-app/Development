@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context=".onBoarding.Login">
+    tools:context=".view.onBoarding.Login">
 
     <ImageView
         android:id="@+id/ivLogo"
@@ -17,9 +17,7 @@
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_home"
-        android:alpha="0"
-        tools:alpha="100"/>
+        app:srcCompat="@drawable/logo_home" />
 
     <ImageView
         android:id="@+id/ivBg"

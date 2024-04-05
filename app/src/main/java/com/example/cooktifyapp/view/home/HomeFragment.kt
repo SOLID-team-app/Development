@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.home
+package com.example.cooktifyapp.view.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
