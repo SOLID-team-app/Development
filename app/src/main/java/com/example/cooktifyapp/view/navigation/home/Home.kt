@@ -21,10 +21,8 @@ class Home : AppCompatActivity() {
         val navView: BottomNavigationView = binding.bottomBar
 
         val navController = findNavController(R.id.fragmentDashboard) // Sesuaikan dengan ID fragment yang sesuai dengan container navigasi.
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.nav_home, R.id.nav_camera, R.id.nav_favorite, R.id.nav_profil // Pastikan ID tujuan dalam AppBarConfiguration sesuai dengan yang ada di XML navigation Anda.
+            R.id.navHome, R.id.navCamera, R.id.navFavorite, R.id.navProfile // Pastikan ID tujuan dalam AppBarConfiguration sesuai dengan yang ada di XML navigation Anda.
         ).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
