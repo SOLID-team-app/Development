@@ -1,6 +1,7 @@
 package com.example.cooktifyapp.view.navigation.inputImages
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -42,6 +43,12 @@ class InputImage : Fragment() {
             startImageSelection(101)
             startImageSelection(102)
         }
+        binding.cardCamera.setOnClickListener {
+            startCameraCapture(200)
+            startCameraCapture(201)
+            startCameraCapture(202)
+        }
+
 
         binding.btnStart.setOnClickListener {
 
@@ -50,6 +57,12 @@ class InputImage : Fragment() {
 
         return view
     }
+
+    private fun startCameraCapture(requestCode: Int) {
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        startActivityForResult(cameraIntent, requestCode)
+    }
+
 
     private fun startImageSelection(requestCode: Int) {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -62,6 +75,14 @@ class InputImage : Fragment() {
         when (requestCode) {
             100, 101, 102 -> {
                 handleImageResult(requestCode, data)
+            }
+            200,201,202 -> {
+                if (resultCode == Activity.RESULT_OK && data != null) {
+                    val imageBitmap = data.extras?.get("data") as Bitmap
+                    binding.itemsImg.setImageBitmap(imageBitmap)
+                    binding.itemsImg2.setImageBitmap(imageBitmap)
+                    binding.itemsImg3.setImageBitmap(imageBitmap)
+                }
             }
         }
     }
