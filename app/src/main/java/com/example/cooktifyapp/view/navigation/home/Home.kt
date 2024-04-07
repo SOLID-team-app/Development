@@ -18,18 +18,16 @@ class Home : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView : BottomNavigationView = binding.bottomBar
+        val navView: BottomNavigationView = binding.bottomBar
 
-
-        val navController = findNavController(R.id.fragmentDashboard)
+        val navController = findNavController(R.id.fragmentDashboard) // Sesuaikan dengan ID fragment yang sesuai dengan container navigasi.
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration.Builder(
-
-            R.id.nav_home, R.id.nav_camera, R.id.nav_favorite, R.id.nav_profil
-
+            R.id.nav_home, R.id.nav_camera, R.id.nav_favorite, R.id.nav_profil // Pastikan ID tujuan dalam AppBarConfiguration sesuai dengan yang ada di XML navigation Anda.
         ).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
 }
