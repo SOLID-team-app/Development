@@ -77,14 +77,25 @@ class InputImage : Fragment() {
                 handleImageResult(requestCode, data)
             }
             200,201,202 -> {
-                if (resultCode == Activity.RESULT_OK && data != null) {
-                    val imageBitmap = data.extras?.get("data") as Bitmap
-                    binding.itemsImg.setImageBitmap(imageBitmap)
-                    binding.itemsImg2.setImageBitmap(imageBitmap)
-                    binding.itemsImg3.setImageBitmap(imageBitmap)
-                }
+                handleCameraResult(requestCode, data)
             }
         }
+    }
+
+    private fun handleCameraResult(requestCode: Int, data: Intent?) {
+        if(data != null){
+            val uri = data.data
+            if (uri != null) {
+                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
+                when(requestCode){
+                    200 -> binding.itemsImg.setImageBitmap(bitmap)
+                    201 -> binding.itemsImg2.setImageBitmap(bitmap)
+                    202 -> binding.itemsImg3.setImageBitmap(bitmap)
+                }
+        }
+
+        }
+
     }
 
     private fun handleImageResult(requestCode: Int, data: Intent?) {
