@@ -2,6 +2,7 @@ package com.example.cooktifyapp.view.onBoarding
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +18,11 @@ class Register : AppCompatActivity() {
         setContentView(binding.root)
 
         playAnimation()
+
+        binding.ivLogo.setOnClickListener {
+            val intent = Intent(this@Register, OnBoarding::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun playAnimation() {
