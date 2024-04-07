@@ -39,11 +39,7 @@ class InputImage : Fragment() {
 
         binding.cardGalery.setOnClickListener {
             startImageSelection(100)
-        }
-        binding.cardGalery.setOnClickListener {
             startImageSelection(101)
-        }
-        binding.cardGalery.setOnClickListener {
             startImageSelection(102)
         }
 
