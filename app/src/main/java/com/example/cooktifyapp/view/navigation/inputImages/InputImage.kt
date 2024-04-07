@@ -29,6 +29,12 @@ class InputImage : Fragment() {
     private val binding get() = _binding!!
 
 
+    companion object {
+        private const val TAG = "InputImageFragment"
+    }
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -83,20 +89,22 @@ class InputImage : Fragment() {
     }
 
     private fun handleCameraResult(requestCode: Int, data: Intent?) {
-        if(data != null){
-            val uri = data.data
-            if (uri != null) {
-                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
-                when(requestCode){
-                    200 -> binding.itemsImg.setImageBitmap(bitmap)
-                    201 -> binding.itemsImg2.setImageBitmap(bitmap)
-                    202 -> binding.itemsImg3.setImageBitmap(bitmap)
+        if (data != null) {
+            val imageBitmap = data.extras?.get("data") as? Bitmap
+            if (imageBitmap != null) {
+                when (requestCode) {
+                    200 -> binding.itemsImg.setImageBitmap(imageBitmap)
+                    201 -> binding.itemsImg2.setImageBitmap(imageBitmap)
+                    202 -> binding.itemsImg3.setImageBitmap(imageBitmap)
                 }
+            } else {
+                Log.e(TAG, "Bitmap is null")
+            }
+        } else {
+            Log.e(TAG, "Intent data is null")
         }
-
-        }
-
     }
+
 
     private fun handleImageResult(requestCode: Int, data: Intent?) {
         if (data != null) {
