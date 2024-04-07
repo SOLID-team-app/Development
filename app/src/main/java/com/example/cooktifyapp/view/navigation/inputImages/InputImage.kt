@@ -24,7 +24,7 @@ import com.example.cooktifyapp.view.Utils.Utils.getImageUri
 
 class InputImage : Fragment() {
 
-    private var _binding: FragmentInputImageBinding? = null
+    private  var _binding: FragmentInputImageBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var labels: List<String>
@@ -37,7 +37,6 @@ class InputImage : Fragment() {
         _binding = FragmentInputImageBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        labels = requireContext().assets.open("labels.txt").bufferedReader().readLines()
 
         binding.ivgaleri.setOnClickListener {
             startImageSelection(100)

@@ -72,6 +72,7 @@ android:layout_height="wrap_content">
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardGalery"
         android:layout_width="390dp"
         android:layout_height="93dp"
         android:layout_marginBottom="24dp"
