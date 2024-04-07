@@ -83,13 +83,13 @@ class InputImage : Fragment() {
                 handleImageResult(requestCode, data)
             }
             200,201,202 -> {
-                handleCameraResult(requestCode, data)
+                handleCameraResult(requestCode, resultCode, data)
             }
         }
     }
 
-    private fun handleCameraResult(requestCode: Int, data: Intent?) {
-        if (data != null) {
+    private fun handleCameraResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && data != null) {
             val imageBitmap = data.extras?.get("data") as? Bitmap
             if (imageBitmap != null) {
                 when (requestCode) {
@@ -101,7 +101,7 @@ class InputImage : Fragment() {
                 Log.e(TAG, "Bitmap is null")
             }
         } else {
-            Log.e(TAG, "Intent data is null")
+            Log.e(TAG, "Camera result is not OK or data is null")
         }
     }
 
