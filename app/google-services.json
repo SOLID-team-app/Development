@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "74095892502",
+    "project_id": "cooktify-f225d",
+    "storage_bucket": "cooktify-f225d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74095892502:android:3e2232d6454a8ad028bd37",
+        "android_client_info": {
+          "package_name": "com.example.cooktifyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoaThER7ixw04N3Frbjnsrvkr4gVfrb5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,7 +18,6 @@ class OnBoarding : AppCompatActivity() {
 
         playAnimation()
 
-
         binding.btnLogin.setOnClickListener{
             val intent = Intent(this@OnBoarding, Login::class.java)
             startActivity(intent)
