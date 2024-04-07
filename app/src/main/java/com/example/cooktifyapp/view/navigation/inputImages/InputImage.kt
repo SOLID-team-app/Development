@@ -27,7 +27,6 @@ class InputImage : Fragment() {
     private  var _binding: FragmentInputImageBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var labels: List<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,9 +37,13 @@ class InputImage : Fragment() {
         val view = binding.root
 
 
-        binding.ivgaleri.setOnClickListener {
+        binding.cardGalery.setOnClickListener {
             startImageSelection(100)
+        }
+        binding.cardGalery.setOnClickListener {
             startImageSelection(101)
+        }
+        binding.cardGalery.setOnClickListener {
             startImageSelection(102)
         }
 
