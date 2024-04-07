@@ -2,6 +2,8 @@ package com.example.cooktifyapp.view.navigation.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -20,11 +22,13 @@ class Home : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.bottomBar
 
-        val navController = findNavController(R.id.fragmentDashboard) // Sesuaikan dengan ID fragment yang sesuai dengan container navigasi.
-        val appBarConfiguration = AppBarConfiguration.Builder(
-            R.id.navHome, R.id.navCamera, R.id.navFavorite, R.id.navProfile // Pastikan ID tujuan dalam AppBarConfiguration sesuai dengan yang ada di XML navigation Anda.
-        ).build()
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.container)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+        val navController = findNavController(R.id.fragmentDashboard)
         navView.setupWithNavController(navController)
     }
 
