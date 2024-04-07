@@ -14,10 +14,9 @@
 
     <fragment
         android:id="@+id/nav_camera"
-        android:name="InputFragment"
+        android:name="com.example.cooktifyapp.view.navigation.inputImages.InputImage"
         android:label="@string/Input"
-        tools:layout="@layout/fragment_input"
-
+        tools:layout="@layout/fragment_input_image"
         />
 
     <fragment
