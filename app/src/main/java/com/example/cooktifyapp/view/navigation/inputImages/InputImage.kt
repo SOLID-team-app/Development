@@ -113,17 +113,12 @@ class InputImage : Fragment() {
         ActivityResultContracts.TakePicture()
     ) { isSuccess ->
         if (isSuccess) {
-            val itemsImg = binding.itemsImg
-            val itemsImg2 = binding.itemsImg2
-            val itemsImg3 = binding.itemsImg3
-            showImage(itemsImg, itemsImg2 , itemsImg3 )
+            showImage()
         }
     }
-    private fun showImage(itemsImg: ImageView, itemsImg2: ImageView, itemsImg3: ImageView) {
+    private fun showImage() {
         currentImageUri?.let {uri ->
             binding.itemsImg.setImageURI(uri)
-            binding.itemsImg2.setImageURI(uri)
-            binding.itemsImg3.setImageURI(uri)
         }
     }
 
