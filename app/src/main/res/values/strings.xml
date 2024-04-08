@@ -8,7 +8,7 @@
     <string name="Login_info">Selamat Datang, </string>
     <string name="Login_info2">Silahkan Login Terlebih Dahulu</string>
     <string name="hint_email">Email</string>
-    <string name="hint_name">Name</string>
+    <string name="hint_name">Nama</string>
     <string name="hint_password">Password</string>
     <string name="Register_info">Belum Punya Akun?</string>
     <string name="Register_info2">Lengkap Data Dirimu\nDibawah ini Ya</string>
@@ -34,4 +34,20 @@
     <string name="notif">Notifications</string>
     <string name="sounds">Sounds</string>
     <string name="Logout">Logout</string>
+    <string name="Recipes">Recipes</string>
+    <string name="nama_menu">Nama Menu</string>
+    <string name="bahan_utama">Bahan Utama:</string>
+    <string name="bahan_tambahan">Bahan Tambahan:</string>
+    <string name="cook_time">Cook Time</string>
+    <string name="resep">Resep</string>
+    <string name="cara_membuat">Cara Membuat</string>
+    <string name="set_timer">Set Timer</string>
+    <string name="lorem_time">00:00</string>
+    <string name="home">Home</string>
+    <string name="favorite_fragment">Favorite</string>
+    <string name="profil">Profile</string>
+    <string name="Input">Input</string>
+    <string name="hi_user">Hi User</string>
+    <string name="default_web_client_id">74095892502-4a2ncupo3s11iocgq08c56g5m6ife4en.apps.googleusercontent.com</string>
+    <string name="ingredients">Ingredients</string>
 </resources>
