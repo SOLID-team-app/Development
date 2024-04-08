@@ -8,7 +8,7 @@
     <string name="Login_info">Selamat Datang, </string>
     <string name="Login_info2">Silahkan Login Terlebih Dahulu</string>
     <string name="hint_email">Email</string>
-    <string name="hint_name">Name</string>
+    <string name="hint_name">Nama</string>
     <string name="hint_password">Password</string>
     <string name="Register_info">Belum Punya Akun?</string>
     <string name="Register_info2">Lengkap Data Dirimu\nDibawah ini Ya</string>
@@ -48,4 +48,5 @@
     <string name="profil">Profile</string>
     <string name="Input">Input</string>
     <string name="hi_user">Hi User</string>
+    <string name="default_web_client_id">74095892502-4a2ncupo3s11iocgq08c56g5m6ife4en.apps.googleusercontent.com</string>
 </resources>
