@@ -40,6 +40,7 @@ class InputImage : Fragment() {
 
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,6 +65,7 @@ class InputImage : Fragment() {
 
         }
 
+
         return view
     }
 
@@ -72,11 +74,6 @@ class InputImage : Fragment() {
             currentImageUri = getImageUri(requireContext())
             launcherIntentCamera.launch(currentImageUri)
         }
-    }
-
-    private fun startCameraCapture(requestCode: Int) {
-        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        startActivityForResult(cameraIntent, requestCode)
     }
 
 
@@ -111,17 +108,22 @@ class InputImage : Fragment() {
         }
     }
 
-    private fun showImage() {
-        currentImageUri?.let {uri ->
-            binding.itemsImg.setImageURI(uri)
 
-        }
-    }
     private val launcherIntentCamera = registerForActivityResult(
         ActivityResultContracts.TakePicture()
     ) { isSuccess ->
         if (isSuccess) {
-            showImage()
+            val itemsImg = binding.itemsImg
+            val itemsImg2 = binding.itemsImg2
+            val itemsImg3 = binding.itemsImg3
+            showImage(itemsImg, itemsImg2 , itemsImg3 )
+        }
+    }
+    private fun showImage(itemsImg: ImageView, itemsImg2: ImageView, itemsImg3: ImageView) {
+        currentImageUri?.let {uri ->
+            binding.itemsImg.setImageURI(uri)
+            binding.itemsImg2.setImageURI(uri)
+            binding.itemsImg3.setImageURI(uri)
         }
     }
 
