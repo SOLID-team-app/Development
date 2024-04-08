@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cooktifyapp.databinding.ItemsRecipeBinding
-import com.example.cooktifyapp.view.data.Recipe.ListMakanan
 import com.example.cooktifyapp.view.data.Recipe.ResponseRecipe
 
-class RecipeAdapter: ListAdapter<ListMakanan, RecipeAdapter.MyViewHolder>(DIFF_CALLBACK){
+class RecipeAdapter: ListAdapter<ResponseRecipe, RecipeAdapter.MyViewHolder>(DIFF_CALLBACK){
     class MyViewHolder(val binding: ItemsRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ListMakanan) {
+        fun bind(item: ResponseRecipe) {
             binding.tvMakananFav.text = item.namaMakanan
             binding.tvIngredients.text = item.bahanUtama
             Glide.with(itemView.context)
@@ -39,12 +38,12 @@ class RecipeAdapter: ListAdapter<ListMakanan, RecipeAdapter.MyViewHolder>(DIFF_C
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListMakanan>() {
-            override fun areItemsTheSame(oldItem: ListMakanan, newItem: ListMakanan): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ResponseRecipe>() {
+            override fun areItemsTheSame(oldItem: ResponseRecipe, newItem: ResponseRecipe): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: ListMakanan, newItem:ListMakanan): Boolean {
+            override fun areContentsTheSame(oldItem: ResponseRecipe, newItem:ResponseRecipe): Boolean {
                 return oldItem == newItem
             }
         }
