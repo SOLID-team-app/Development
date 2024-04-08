@@ -27,10 +27,15 @@ class InputImage : Fragment() {
 
     private  var _binding: FragmentInputImageBinding? = null
     private val binding get() = _binding!!
-
+    private var currentImageUri: Uri? = null
+    private fun allPermissionGranted() =
+        ContextCompat.checkSelfPermission(
+            requireContext(),
+            REQUIRED_PERMISSION
+        ) == PackageManager.PERMISSION_GRANTED
 
     companion object {
-        private const val TAG = "InputImageFragment"
+        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 
 
@@ -50,9 +55,7 @@ class InputImage : Fragment() {
             startImageSelection(102)
         }
         binding.cardCamera.setOnClickListener {
-            startCameraCapture(200)
-            startCameraCapture(201)
-            startCameraCapture(202)
+            startCamera()
         }
 
 
@@ -62,6 +65,13 @@ class InputImage : Fragment() {
         }
 
         return view
+    }
+
+    private fun startCamera() {
+        if (allPermissionGranted()) {
+            currentImageUri = getImageUri(requireContext())
+            launcherIntentCamera.launch(currentImageUri)
+        }
     }
 
     private fun startCameraCapture(requestCode: Int) {
@@ -82,26 +92,7 @@ class InputImage : Fragment() {
             100, 101, 102 -> {
                 handleImageResult(requestCode, data)
             }
-            200,201,202 -> {
-                handleCameraResult(requestCode, resultCode, data)
-            }
-        }
-    }
 
-    private fun handleCameraResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && data != null) {
-            val imageBitmap = data.extras?.get("data") as? Bitmap
-            if (imageBitmap != null) {
-                when (requestCode) {
-                    200 -> binding.itemsImg.setImageBitmap(imageBitmap)
-                    201 -> binding.itemsImg2.setImageBitmap(imageBitmap)
-                    202 -> binding.itemsImg3.setImageBitmap(imageBitmap)
-                }
-            } else {
-                Log.e(TAG, "Bitmap is null")
-            }
-        } else {
-            Log.e(TAG, "Camera result is not OK or data is null")
         }
     }
 
@@ -117,6 +108,20 @@ class InputImage : Fragment() {
                     102 -> binding.itemsImg3.setImageBitmap(bitmap)
                 }
             }
+        }
+    }
+
+    private fun showImage() {
+        currentImageUri?.let {uri ->
+            binding.itemsImg.setImageURI(uri)
+
+        }
+    }
+    private val launcherIntentCamera = registerForActivityResult(
+        ActivityResultContracts.TakePicture()
+    ) { isSuccess ->
+        if (isSuccess) {
+            showImage()
         }
     }
 

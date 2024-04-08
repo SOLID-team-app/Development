@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.auth
 
+
 @Suppress("DEPRECATION")
 class OnBoarding : AppCompatActivity() {
 
