@@ -50,4 +50,7 @@
     <string name="hi_user">Hi User</string>
     <string name="default_web_client_id">74095892502-4a2ncupo3s11iocgq08c56g5m6ife4en.apps.googleusercontent.com</string>
     <string name="ingredients">Ingredients</string>
+    <string name="edit_your_account">Info Pribadi</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="simpan">Simpan</string>
 </resources>

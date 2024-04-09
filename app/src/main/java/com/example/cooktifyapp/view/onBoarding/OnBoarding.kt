@@ -26,7 +26,7 @@ import com.google.firebase.auth.auth
 class OnBoarding : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnBoardingBinding
-    private lateinit var auth: FirebaseAuth
+    private val auth: FirebaseAuth = Firebase.auth
     private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +44,6 @@ class OnBoarding : AppCompatActivity() {
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(applicationContext, gso)
-        auth = Firebase.auth
 
         playAnimation()
         setupAction()
