@@ -3,19 +3,11 @@ package com.example.cooktifyapp.view.data.Recipe
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-
-
-data class Recipes (
-
-	@field:SerializedName("listMakanan")
-	val recipes: List<ResponseRecipe>? = emptyList(),
-
-	@field:SerializedName("error")
-	val error: Boolean? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null
+data class ListResep (
+	@field:SerializedName("list_resep")
+	var listresep : List<ResponseRecipe> = emptyList()
 )
+
 @Parcelize
 data class ResponseRecipe(
 
