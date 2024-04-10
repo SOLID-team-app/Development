@@ -1,7 +1,6 @@
 package com.example.cooktifyapp.view.data.repository
 
 
-import com.example.cooktifyapp.view.data.Recipe.ResponseRecipe
 import com.example.cooktifyapp.view.data.api.ApiService
 
 class Repository(private val apiService: ApiService, ) {

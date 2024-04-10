@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cooktifyapp.databinding.ItemsRecipeBinding
-import com.example.cooktifyapp.view.data.Recipe.ResponseRecipe
 import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
 
 class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder>(DIFF_CALLBACK){
