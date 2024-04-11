@@ -8,8 +8,6 @@ import com.example.cooktifyapp.view.data.Di.DataInjection
 
 class ViewmodelFactory private constructor(private val mAppRepository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
-
-
     companion object{
         fun getInstance(context: Context): ViewmodelFactory =  ViewmodelFactory(DataInjection.ProviderRepository(context))
     }

@@ -1,5 +1,7 @@
 package com.example.cooktifyapp.view.data.Recipe
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class ResponseRecipes(
@@ -31,5 +33,42 @@ data class ResponseRecipesItem(
 
 	@field:SerializedName("resep")
 	val resep: String? = null
-)
+):Parcelable {
+	constructor(parcel: Parcel) : this(
+		parcel.readString(),
+		parcel.readString(),
+		parcel.readValue(Int::class.java.classLoader) as? Int,
+		parcel.readString(),
+		parcel.readValue(Int::class.java.classLoader) as? Int,
+		parcel.readValue(Int::class.java.classLoader) as? Int,
+		parcel.readString(),
+		parcel.readString()
+	) {
+	}
+
+	override fun writeToParcel(parcel: Parcel, flags: Int) {
+		parcel.writeString(caraMasak)
+		parcel.writeString(namaMakanan)
+		parcel.writeValue(loves)
+		parcel.writeString(linkGambar)
+		parcel.writeValue(jumlahBahanUtama)
+		parcel.writeValue(id)
+		parcel.writeString(bahanUtama)
+		parcel.writeString(resep)
+	}
+
+	override fun describeContents(): Int {
+		return 0
+	}
+
+	companion object CREATOR : Parcelable.Creator<ResponseRecipesItem> {
+		override fun createFromParcel(parcel: Parcel): ResponseRecipesItem {
+			return ResponseRecipesItem(parcel)
+		}
+
+		override fun newArray(size: Int): Array<ResponseRecipesItem?> {
+			return arrayOfNulls(size)
+		}
+	}
+}
 

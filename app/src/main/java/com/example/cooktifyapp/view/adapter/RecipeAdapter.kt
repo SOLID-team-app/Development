@@ -1,5 +1,6 @@
 package com.example.cooktifyapp.view.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.cooktifyapp.R
 import com.example.cooktifyapp.databinding.ItemsRecipeBinding
 import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
+import com.example.cooktifyapp.view.detail.Detail
 
 class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder>(DIFF_CALLBACK){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -30,12 +32,11 @@ class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder
                 .placeholder(R.drawable.tulisan_cooktify)
                 .into(binding.imgFav)
 
-//            binding.userItem.setOnClickListener {
-//                val intent = Intent(itemView.context, DetailItems::class.java)
-//                intent.putExtra(DetailItems.ITEM_IMAGE_URL, item.imageUrl)
-//                intent.putExtra(DetailItems.ITEM_CLOTHING_TYPE, item.clothingType)
-//                itemView.context.startActivity(intent)
-//            }
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, Detail::class.java)
+                intent.putExtra("recipe", item)
+                itemView.context.startActivity(intent)
+            }
 
         }
     }
