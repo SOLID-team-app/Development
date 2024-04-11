@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_putih"
-    tools:context=".view.navigation.favorite.Favorite">
+    tools:context=".view.Recipe.Recipe">
 
 
     <androidx.recyclerview.widget.RecyclerView
