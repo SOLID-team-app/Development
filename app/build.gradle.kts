@@ -70,13 +70,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
-<<<<<<<<< Temporary merge branch 1
-
-=========
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     //Datastore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
->>>>>>>>> Temporary merge branch 2
+
 }
