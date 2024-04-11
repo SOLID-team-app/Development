@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cooktifyapp.R
 import com.example.cooktifyapp.databinding.ActivityRecipeBinding
 import com.example.cooktifyapp.view.adapter.RecipeAdapter
-import com.example.cooktifyapp.view.data.Recipe.ListMakanan
 import com.example.cooktifyapp.view.data.repository.ViewmodelFactory
 
 class Recipe : AppCompatActivity() {
@@ -18,24 +17,24 @@ class Recipe : AppCompatActivity() {
     private lateinit var binding: ActivityRecipeBinding
     private lateinit var recipeViewModel: RecipeViewModel
     private lateinit var adapter: RecipeAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityRecipeBinding.inflate(layoutInflater)
+        binding = ActivityRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val recipeViewModel = obtainViewModel(this@Recipe)
-        val LayoutManager = LinearLayoutManager(this)
-        binding.rvRecipes.layoutManager = LayoutManager
-        val itemDecoration = DividerItemDecoration(this, LayoutManager.orientation)
+        recipeViewModel = obtainViewModel(this@Recipe)
+        val layoutManager = LinearLayoutManager(this)
+        binding.rvRecipes.layoutManager = layoutManager
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvRecipes.addItemDecoration(itemDecoration)
         adapter = RecipeAdapter()
         binding.rvRecipes.adapter = adapter
-
-        getRecipe()
-
+        recipeViewModel.getRecipe(this)
+        showRecipe()
     }
 
-    private fun getRecipe() {
+     private fun showRecipe() {
         recipeViewModel.recipe.observe(this) { recipeList ->
             adapter.submitList(recipeList)
         }

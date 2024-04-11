@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 
-data class ResponseRecipe (
+data class Recipes (
 
 	@field:SerializedName("listMakanan")
-	val listMakanan: List<ListMakanan>? = emptyList(),
+	val recipes: List<ResponseRecipe>? = emptyList(),
 
 	@field:SerializedName("error")
 	val error: Boolean? = null,
@@ -17,7 +17,7 @@ data class ResponseRecipe (
 	val message: String? = null
 )
 @Parcelize
-data class ListMakanan(
+data class ResponseRecipe(
 
 	@field:SerializedName("cara_masak")
 	val caraMasak: String? = null,
