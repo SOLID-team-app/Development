@@ -1,8 +1,7 @@
 package com.example.cooktifyapp.view.data.api
 
-import com.example.cooktifyapp.view.data.Recipe.ResponseFavorite
-import com.example.cooktifyapp.view.data.Recipe.ResponseRecipes
-import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
+import com.example.cooktifyapp.view.data.RecipeResponse.ResponseFavorite
+import com.example.cooktifyapp.view.data.RecipeResponse.ResponseRecipesItem
 import retrofit2.Call
 
 import retrofit2.http.GET

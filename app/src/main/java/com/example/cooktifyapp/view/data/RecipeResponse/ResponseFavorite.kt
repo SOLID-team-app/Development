@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.view.data.Recipe
+package com.example.cooktifyapp.view.data.RecipeResponse
 
 data class ResponseFavorite(
 	val responseFavorite: List<ResponseFavoriteItem?>? = null

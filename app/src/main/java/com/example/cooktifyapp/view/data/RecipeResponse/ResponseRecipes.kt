@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.view.data.Recipe
+package com.example.cooktifyapp.view.data.RecipeResponse
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

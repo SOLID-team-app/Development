@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
+import com.example.cooktifyapp.view.data.RecipeResponse.ResponseRecipesItem
 import com.example.cooktifyapp.view.data.api.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback

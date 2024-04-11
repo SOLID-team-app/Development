@@ -1,3 +1,5 @@
+package com.example.cooktifyapp.view.Recipe
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
