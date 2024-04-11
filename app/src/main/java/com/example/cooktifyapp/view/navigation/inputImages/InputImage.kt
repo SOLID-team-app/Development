@@ -1,131 +1,245 @@
 package com.example.cooktifyapp.view.navigation.inputImages
 
 import android.Manifest
-import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.activity.result.PickVisualMediaRequest
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.cooktifyapp.R
 import com.example.cooktifyapp.databinding.FragmentInputImageBinding
-import com.example.cooktifyapp.view.Utils.Utils.getImageUri
+import java.io.IOException
+import java.io.InputStream
 
+@Suppress("DEPRECATION")
 class InputImage : Fragment() {
 
-    private  var _binding: FragmentInputImageBinding? = null
-    private val binding get() = _binding!!
-    private var currentImageUri: Uri? = null
-    private fun allPermissionGranted() =
-        ContextCompat.checkSelfPermission(
-            requireContext(),
-            REQUIRED_PERMISSION
-        ) == PackageManager.PERMISSION_GRANTED
+    private lateinit var binding:FragmentInputImageBinding
 
-    companion object {
-        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
-    }
-
-
-
+    private val PERMISSION_CAMERA_REQUEST_CODE = 1
+    private val PERMISSION_READ_EXTERNAL_STORAGE_REQUEST_CODE = 1
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentInputImageBinding.inflate(inflater, container, false)
-        val view = binding.root
+    ): View {
+        binding = FragmentInputImageBinding.inflate(inflater, container, false)
+        val root = binding.root
 
+        cekPermission()
 
-        binding.cardGalery.setOnClickListener {
-            startImageSelection(100)
-            startImageSelection(101)
-            startImageSelection(102)
+        setupAction()
+
+        return root
+    }
+
+    private fun setupAction() {
+        binding.cv1.setOnClickListener {
+            pilihGambarBahan1()
         }
-        binding.cardCamera.setOnClickListener {
-            startCamera()
+
+        binding.cv2.setOnClickListener {
+            pilihGambarBahan2()
         }
 
+        binding.cv3.setOnClickListener {
+            pilihGambarBahan3()
+        }
 
         binding.btnStart.setOnClickListener {
 
-
-        }
-
-
-        return view
-    }
-
-    private fun startCamera() {
-        if (allPermissionGranted()) {
-            currentImageUri = getImageUri(requireContext())
-            launcherIntentCamera.launch(currentImageUri)
         }
     }
 
+    private fun pilihGambarBahan1() {
+        val items = arrayOf<CharSequence>("Ambil Foto", "Ambil Dari Galeri", "Cancel")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Pilih Gambar")
+        builder.setIcon(R.drawable.tulisan_cooktify)
+        builder.setItems(items) { dialog, item ->
+            when {
+                items[item] == "Ambil Foto" -> {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(intent, 30)
+                }
+                items[item] == "Ambil Dari Galeri" -> {
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), 40)
+                }
+                items[item] == "Cancel" -> dialog.dismiss()
+            }
+        }
+        builder.show()
+    }
 
-    private fun startImageSelection(requestCode: Int) {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, requestCode)
+    private fun pilihGambarBahan2() {
+        val items = arrayOf<CharSequence>("Ambil Foto", "Ambil Dari Galeri", "Cancel")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Pilih Gambar")
+        builder.setIcon(R.drawable.tulisan_cooktify)
+        builder.setItems(items) { dialog, item ->
+            when {
+                items[item] == "Ambil Foto" -> {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(intent, 50)
+                }
+                items[item] == "Ambil Dari Galeri" -> {
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), 60)
+                }
+                items[item] == "Cancel" -> dialog.dismiss()
+            }
+        }
+        builder.show()
+    }
+
+    private fun pilihGambarBahan3() {
+        val items = arrayOf<CharSequence>("Ambil Foto", "Ambil Dari Galeri", "Cancel")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Pilih Gambar")
+        builder.setIcon(R.drawable.tulisan_cooktify)
+        builder.setItems(items) { dialog, item ->
+            when {
+                items[item] == "Ambil Foto" -> {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(intent, 70)
+                }
+                items[item] == "Ambil Dari Galeri" -> {
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), 80)
+                }
+                items[item] == "Cancel" -> dialog.dismiss()
+            }
+        }
+        builder.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        when (requestCode) {
-            100, 101, 102 -> {
-                handleImageResult(requestCode, data)
-            }
-
-        }
-    }
-
-
-    private fun handleImageResult(requestCode: Int, data: Intent?) {
-        if (data != null) {
-            val uri = data.data
-            if (uri != null) {
-                val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
-                when (requestCode) {
-                    100 -> binding.itemsImg.setImageBitmap(bitmap)
-                    101 -> binding.itemsImg2.setImageBitmap(bitmap)
-                    102 -> binding.itemsImg3.setImageBitmap(bitmap)
+        if (requestCode == 40 && resultCode == AppCompatActivity.RESULT_OK && data != null) {
+            val path: Uri? = data.data
+            val thread = Thread {
+                try {
+                    val stream: InputStream? = requireActivity().contentResolver.openInputStream(path!!)
+                    val bitmap = BitmapFactory.decodeStream(stream)
+                    binding.ivImage1.post {
+                        binding.ivImage1.setImageBitmap(bitmap)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
                 }
             }
+            thread.start()
+        }
+
+        if (requestCode == 30 && resultCode == AppCompatActivity.RESULT_OK) {
+            val extras: Bundle? = data?.extras
+            val thread = Thread {
+                val bitmap = extras?.get("data") as Bitmap?
+                binding.ivImage1.post {
+                    binding.ivImage1.setImageBitmap(bitmap)
+                }
+            }
+            thread.start()
+        }
+
+        if (requestCode == 60 && resultCode == AppCompatActivity.RESULT_OK && data != null) {
+            val path: Uri? = data.data
+            val thread = Thread {
+                try {
+                    val stream: InputStream? = requireActivity().contentResolver.openInputStream(path!!)
+                    val bitmap = BitmapFactory.decodeStream(stream)
+                    binding.ivImage2.post {
+                        binding.ivImage2.setImageBitmap(bitmap)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+            thread.start()
+        }
+
+        if (requestCode == 50 && resultCode == AppCompatActivity.RESULT_OK) {
+            val extras: Bundle? = data?.extras
+            val thread = Thread {
+                val bitmap = extras?.get("data") as Bitmap?
+                binding.ivImage2.post {
+                    binding.ivImage2.setImageBitmap(bitmap)
+                }
+            }
+            thread.start()
+        }
+
+        if (requestCode == 80 && resultCode == AppCompatActivity.RESULT_OK && data != null) {
+            val path: Uri? = data.data
+            val thread = Thread {
+                try {
+                    val stream: InputStream? = requireActivity().contentResolver.openInputStream(path!!)
+                    val bitmap = BitmapFactory.decodeStream(stream)
+                    binding.ivImage3.post {
+                        binding.ivImage3.setImageBitmap(bitmap)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                }
+            }
+            thread.start()
+        }
+
+        if (requestCode == 70 && resultCode == AppCompatActivity.RESULT_OK) {
+            val extras: Bundle? = data?.extras
+            val thread = Thread {
+                val bitmap = extras?.get("data") as Bitmap?
+                binding.ivImage3.post {
+                    binding.ivImage3.setImageBitmap(bitmap)
+                }
+            }
+            thread.start()
+        }
+    }
+
+    private fun cekPermission() {
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.CAMERA
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.CAMERA),
+                PERMISSION_CAMERA_REQUEST_CODE
+            )
+        }
+
+        if (ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.CAMERA),
+                PERMISSION_READ_EXTERNAL_STORAGE_REQUEST_CODE
+            )
         }
     }
 
 
-    private val launcherIntentCamera = registerForActivityResult(
-        ActivityResultContracts.TakePicture()
-    ) { isSuccess ->
-        if (isSuccess) {
-            showImage()
-        }
-    }
-    private fun showImage() {
-        currentImageUri?.let {uri ->
-            binding.itemsImg.setImageURI(uri)
-        }
-    }
 
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
 
