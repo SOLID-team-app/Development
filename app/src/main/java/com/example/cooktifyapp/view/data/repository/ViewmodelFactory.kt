@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.cooktifyapp.view.Recipe.RecipeViewModel
 import com.example.cooktifyapp.view.data.Di.DataInjection
+import com.example.cooktifyapp.view.navigation.favorite.FavoriteViewModel
 
 class ViewmodelFactory private constructor(private val mAppRepository: Repository) : ViewModelProvider.NewInstanceFactory() {
 
@@ -18,6 +19,8 @@ class ViewmodelFactory private constructor(private val mAppRepository: Repositor
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RecipeViewModel::class.java)) {
             return RecipeViewModel(mAppRepository) as T
+        }else if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
+            return  FavoriteViewModel(mAppRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }

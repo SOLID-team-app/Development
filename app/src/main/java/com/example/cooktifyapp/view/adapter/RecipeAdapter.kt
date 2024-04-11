@@ -13,11 +13,11 @@ import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
 class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder>(DIFF_CALLBACK){
     class MyViewHolder(val binding: ItemsRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResponseRecipesItem) {
-            binding.tvMakananFav.text = item.namaMakanan
+            binding.tvMakananresep.text = item.namaMakanan
             binding.tvIngredients.text = item.bahanUtama
             Glide.with(itemView.context)
                 .load(item.linkGambar)
-                .into(binding.imgFav)
+                .into(binding.imgResep)
 
 //            binding.userItem.setOnClickListener {
 //                val intent = Intent(itemView.context, DetailItems::class.java)

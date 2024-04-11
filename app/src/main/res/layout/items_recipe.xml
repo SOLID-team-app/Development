@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
         <ImageView
-            android:id="@+id/img_fav"
+            android:id="@+id/img_resep"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,16 +26,16 @@
             tools:src="@tools:sample/avatars"/>
 
         <TextView
-            android:id="@+id/tvMakananFav"
+            android:id="@+id/tvMakananresep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="80dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/fav_name"
-            app:layout_constraintEnd_toEndOf="@id/img_fav"
+            app:layout_constraintEnd_toEndOf="@id/img_resep"
             app:layout_constraintHorizontal_bias="0.081"
-            app:layout_constraintStart_toStartOf="@id/img_fav"
-            app:layout_constraintTop_toTopOf="@id/img_fav" />
+            app:layout_constraintStart_toStartOf="@id/img_resep"
+            app:layout_constraintTop_toTopOf="@id/img_resep" />
 
         <TextView
             android:id="@+id/tvIngredients"
@@ -43,11 +43,11 @@
             android:layout_height="wrap_content"
             android:text="@string/ingredients"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_fav"
-            app:layout_constraintEnd_toEndOf="@+id/tvMakananFav"
+            app:layout_constraintBottom_toBottomOf="@+id/img_resep"
+            app:layout_constraintEnd_toEndOf="@+id/tvMakananresep"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvMakananFav"
-            app:layout_constraintTop_toBottomOf="@id/tvMakananFav"
+            app:layout_constraintStart_toStartOf="@+id/tvMakananresep"
+            app:layout_constraintTop_toBottomOf="@id/tvMakananresep"
             app:layout_constraintVertical_bias="0.0" />
 
 
