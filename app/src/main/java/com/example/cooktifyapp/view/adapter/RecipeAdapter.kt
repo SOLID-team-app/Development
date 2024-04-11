@@ -1,6 +1,7 @@
 package com.example.cooktifyapp.view.adapter
 
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cooktifyapp.databinding.ItemsRecipeBinding
 import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
+import com.example.cooktifyapp.view.detail.Detail
 
 class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder>(DIFF_CALLBACK){
     class MyViewHolder(val binding: ItemsRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -19,12 +21,12 @@ class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder
                 .load(item.linkGambar)
                 .into(binding.imgResep)
 
-//            binding.userItem.setOnClickListener {
-//                val intent = Intent(itemView.context, DetailItems::class.java)
-//                intent.putExtra(DetailItems.ITEM_IMAGE_URL, item.imageUrl)
-//                intent.putExtra(DetailItems.ITEM_CLOTHING_TYPE, item.clothingType)
-//                itemView.context.startActivity(intent)
-//            }
+            binding.itemsOutput.setOnClickListener {
+                val intent = Intent(itemView.context, Detail::class.java)
+                intent.putExtra(Detail.ITEM_IMAGE_URL, item.linkGambar)
+                intent.putExtra(Detail.ITEM_BAHAN_UTAMA, item.bahanUtama)
+                itemView.context.startActivity(intent)
+            }
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeAdapter.MyViewHolder {

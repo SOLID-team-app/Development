@@ -26,6 +26,7 @@ class Recipe : AppCompatActivity() {
         setupRecyclerView()
         observeRecipes()
 
+
     }
 
     private fun setupRecyclerView() {

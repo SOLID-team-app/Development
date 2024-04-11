@@ -20,10 +20,18 @@ class Detail : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
 
+
+
+    companion object{
+        const val ITEM_IMAGE_URL = "itemImageUrl"
+        const val ITEM_BAHAN_UTAMA = "itemBahanUtama"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         getDetail()
 
