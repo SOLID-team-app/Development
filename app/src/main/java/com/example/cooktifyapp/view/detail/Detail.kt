@@ -1,21 +1,43 @@
 package com.example.cooktifyapp.view.detail
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.cooktifyapp.R
+import com.bumptech.glide.Glide
+import com.example.cooktifyapp.databinding.ActivityDetailBinding
+import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
 
 class Detail : AppCompatActivity() {
+
+    private lateinit var binding: ActivityDetailBinding
+
+
+
+    companion object{
+        const val ITEM_IMAGE_URL = "itemImageUrl"
+        const val ITEM_BAHAN_UTAMA = "itemBahanUtama"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+        getDetail()
+
+    }
+    private fun getDetail(){
+        val bahan = intent.getParcelableExtra<ResponseRecipesItem>("bahan_makanan")
+        if (bahan != null) {
+            Glide.with(applicationContext)
+                .load(bahan.linkGambar)
+                .into(binding.ivImage)
+            binding.tvBahanUtama.text = bahan.bahanUtama
+        } else {
+            // Tangani kasus di mana objek yang diterima null
+            // Misalnya, tampilkan pesan kesalahan atau lakukan tindakan yang sesuai
         }
     }
+
+
 }

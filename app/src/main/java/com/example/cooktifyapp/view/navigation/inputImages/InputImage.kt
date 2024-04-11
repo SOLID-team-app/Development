@@ -46,6 +46,7 @@ class InputImage : Fragment() {
     ): View {
         binding = FragmentInputImageBinding.inflate(inflater, container, false)
         val root = binding.root
+        labels = requireContext().assets.open("labels.txt").bufferedReader().readLines()
 
         cekPermission()
 
@@ -294,7 +295,7 @@ class InputImage : Fragment() {
                 Log.d("CameraActivity", "Confidence for class $i: ${confidences[i]}")
             }
 
-            var maxPos = 0
+            var maxPos = 1
             var maxConfidence = 0.0f
 
             for (i in confidences.indices) {

@@ -1,5 +1,6 @@
 package com.example.cooktifyapp.view.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.cooktifyapp.databinding.FragmentHomeBinding
+import com.example.cooktifyapp.view.Recipe.Recipe
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -29,6 +31,11 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         getNamaUser()
+        binding.ivSeeAll.setOnClickListener{
+            val intent = Intent(requireContext(), Recipe::class.java)
+            startActivity(intent)
+
+        }
         
         return binding.root
     }
