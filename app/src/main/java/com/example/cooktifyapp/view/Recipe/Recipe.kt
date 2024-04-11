@@ -1,6 +1,7 @@
 package com.example.cooktifyapp.view.Recipe
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.example.cooktifyapp.view.adapter.RecipeAdapter
 import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
 import com.example.cooktifyapp.view.data.api.ApiConfig
 import com.example.cooktifyapp.view.data.repository.ViewmodelFactory
+import com.example.cooktifyapp.view.settings.SettingsActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +31,14 @@ class Recipe : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecipeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+        binding.gotosetting.setOnClickListener {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvRecipes.layoutManager = layoutManager

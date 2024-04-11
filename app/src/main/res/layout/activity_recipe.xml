@@ -20,6 +20,7 @@
             app:title="@string/Recipes">
 
             <ImageView
+                android:id="@+id/gotosetting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/dots"
