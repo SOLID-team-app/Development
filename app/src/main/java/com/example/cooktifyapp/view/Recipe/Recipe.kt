@@ -39,14 +39,16 @@ class Recipe : AppCompatActivity() {
         binding.rvRecipes.addItemDecoration(itemDecoration)
         adapter = RecipeAdapter()
         binding.rvRecipes.adapter = adapter
-        recipeViewModel.recipe.observe(this){
-            showRecipe(it)
-        }
+        recipeViewModel.recipe
+            showRecipe()
+
 
     }
 
-     private fun showRecipe(recipeList: List<ResponseRecipesItem?>?) {
-            adapter.submitList(recipeList)
+     private fun showRecipe() {
+            recipeViewModel.recipe.observe(this){
+                adapter.submitList(it)
+            }
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): RecipeViewModel {
