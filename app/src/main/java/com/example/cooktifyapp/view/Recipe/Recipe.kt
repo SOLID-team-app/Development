@@ -1,28 +1,17 @@
 package com.example.cooktifyapp.view.Recipe
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cooktifyapp.R
 import com.example.cooktifyapp.databinding.ActivityRecipeBinding
 import com.example.cooktifyapp.view.adapter.RecipeAdapter
-import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
-import com.example.cooktifyapp.view.data.api.ApiConfig
-import com.example.cooktifyapp.view.data.repository.ViewmodelFactory
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class Recipe : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecipeBinding
-    private lateinit var recipeViewModel: RecipeViewModel
+    private val recipeViewModel: RecipeViewModel by viewModels()
     private lateinit var adapter: RecipeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,39 +24,25 @@ class Recipe : AppCompatActivity() {
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvRecipes.addItemDecoration(itemDecoration)
 
-        getRecipes()
+        setupRecyclerView()
+        observeRecipes()
 
     }
 
-    private fun getRecipes() {
-        val client = ApiConfig.getApiservice().recipes()
-        client.enqueue(object : Callback<List<ResponseRecipesItem>> {
-            override fun onResponse(
-                call: Call<List<ResponseRecipesItem>>,
-                response: Response<List<ResponseRecipesItem>>
-            ) {
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        setDataRecipe(responseBody)
-                    } else {
-                        Log.e("Recipe", "Response body is null")
-                    }
-                } else {
-                    Log.e("Recipe", "onFailure: ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<List<ResponseRecipesItem>>, t: Throwable) {
-                Log.e("Recipe", "onFailure: ${t.message}")
-            }
-        })
+    private fun setupRecyclerView() {
+        adapter = RecipeAdapter()
+        binding.rvRecipes.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = this@Recipe.adapter
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        }
     }
 
-
-    private fun setDataRecipe(users: List<ResponseRecipesItem>) {
-        val userAdapter = RecipeAdapter()
-        userAdapter.submitList(users)
-        binding.rvRecipes.adapter = userAdapter
+    private fun observeRecipes() {
+        recipeViewModel.recipes.observe(this) { recipes ->
+            recipes?.let {
+                adapter.submitList(it)
+            }
+        }
     }
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cooktifyapp.R
 import com.example.cooktifyapp.databinding.ItemsRecipeBinding
 import com.example.cooktifyapp.view.data.Recipe.ResponseRecipesItem
 
@@ -26,6 +27,7 @@ class RecipeAdapter: ListAdapter<ResponseRecipesItem, RecipeAdapter.MyViewHolder
             binding.tvIngredients.text = item.bahanUtama
             Glide.with(itemView.context)
                 .load(item.linkGambar)
+                .placeholder(R.drawable.tulisan_cooktify)
                 .into(binding.imgFav)
 
 //            binding.userItem.setOnClickListener {
