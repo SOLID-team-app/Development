@@ -6,20 +6,29 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.cooktifyapp.R
 import com.example.cooktifyapp.databinding.FragmentInputImageBinding
+import com.example.cooktifyapp.ml.Model
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.IOException
 import java.io.InputStream
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 
 @Suppress("DEPRECATION")
 class InputImage : Fragment() {
@@ -28,6 +37,7 @@ class InputImage : Fragment() {
 
     private val PERMISSION_CAMERA_REQUEST_CODE = 1
     private val PERMISSION_READ_EXTERNAL_STORAGE_REQUEST_CODE = 1
+    private lateinit var labels: List<String>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,6 +54,7 @@ class InputImage : Fragment() {
         return root
     }
 
+
     private fun setupAction() {
         binding.cv1.setOnClickListener {
             pilihGambarBahan1()
@@ -58,7 +69,13 @@ class InputImage : Fragment() {
         }
 
         binding.btnStart.setOnClickListener {
+            val bitmap1 = (binding.ivImage1.drawable as BitmapDrawable).bitmap
+            val bitmap2 = (binding.ivImage2.drawable as BitmapDrawable).bitmap
+            val bitmap3 = (binding.ivImage3.drawable as BitmapDrawable).bitmap
 
+            processImage(binding.ivImage1, binding.tvNamaBahan1, bitmap1)
+            processImage(binding.ivImage2, binding.tvNamaBahan2, bitmap2)
+            processImage(binding.ivImage3, binding.tvNamaBahan3, bitmap3)
         }
     }
 
@@ -239,7 +256,67 @@ class InputImage : Fragment() {
         }
     }
 
+    private fun processImage(imageView: ImageView, textView: TextView, image: Bitmap) {
+        try {
 
 
+            val model = Model.newInstance(requireContext())
+
+            val inputFeature0 =
+                TensorBuffer.createFixedSize(intArrayOf(1, 300, 300, 3), DataType.FLOAT32)
+
+            val intValues = IntArray(image.width * image.height)
+            image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
+
+            val byteBuffer = ByteBuffer.allocateDirect(4 * 300 * 300 * 3)
+            byteBuffer.order(ByteOrder.nativeOrder())
+
+            var pixel = 0
+            for (i in 0 until 300) {
+                for (j in 0 until 300) {
+                    if (pixel < intValues.size) {
+                        val value = intValues[pixel++]
+                        byteBuffer.putFloat(((value shr 16) and 0xFF) * (1f / 255f))
+                        byteBuffer.putFloat(((value shr 8) and 0xFF) * (1f / 255f))
+                        byteBuffer.putFloat((value and 0xFF) * (1f / 255f))
+                    }
+                }
+            }
+
+            inputFeature0.loadBuffer(byteBuffer)
+
+            val outputs = model.process(inputFeature0)
+            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+            val confidences: FloatArray = outputFeature0.floatArray
+
+            for (i in confidences.indices) {
+                Log.d("CameraActivity", "Confidence for class $i: ${confidences[i]}")
+            }
+
+            var maxPos = 0
+            var maxConfidence = 0.0f
+
+            for (i in confidences.indices) {
+                if (confidences[i] > maxConfidence) {
+                    maxConfidence = confidences[i]
+                    maxPos = i
+                }
+            }
+
+            if (maxPos < labels.size) {
+                textView.text = labels[maxPos]
+            } else {
+                textView.text = "Unknown"
+                Log.e("CameraActivity", "Invalid index: $maxPos")
+            }
+
+            model.close()
+
+        } catch (e: Exception) {
+            Log.e("CameraActivity", "Error processing image", e)
+        }
+
+    }
 }
 
