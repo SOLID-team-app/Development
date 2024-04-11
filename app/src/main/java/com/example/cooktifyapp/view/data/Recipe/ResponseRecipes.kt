@@ -1,10 +1,14 @@
 package com.example.cooktifyapp.view.data.Recipe
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class ResponseRecipes(
 	@SerializedName("response_Recipes")
 	val responseRecipes: List<ResponseRecipesItem?>? = emptyList()
 )
 
+@Parcelize
 data class ResponseRecipesItem(
 	@SerializedName("cara_masak")
 	val caraMasak: String? = null,
@@ -29,6 +33,6 @@ data class ResponseRecipesItem(
 
 	@SerializedName("resep")
 	val resep: String? = null
-)
+):Parcelable
 
 annotation class SerializedName(val value: String)

@@ -1,4 +1,4 @@
-package com.example.cooktifyapp.view.Recipe
+package com.example.cooktifyapp.view.detail
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -10,7 +10,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class RecipeViewModel():ViewModel() {
+class DetailViewModel():ViewModel() {
+
 
     private val _recipes = MutableLiveData<List<ResponseRecipesItem>>()
     val recipes: LiveData<List<ResponseRecipesItem>> = _recipes
@@ -38,5 +39,4 @@ class RecipeViewModel():ViewModel() {
             }
         })
     }
-
 }
