@@ -36,6 +36,7 @@ class Detail : AppCompatActivity() {
                 .placeholder(R.drawable.tulisan_cooktify)
                 .into(binding.ivImage)
             binding.tvBahanUtama.text = bahan.bahanUtama
+            binding.tvNamaMakanan.text = bahan.namaMakanan
         }
 
     }

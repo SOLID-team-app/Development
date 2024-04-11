@@ -38,6 +38,7 @@ class InputImage : Fragment() {
     private val PERMISSION_CAMERA_REQUEST_CODE = 1
     private val PERMISSION_READ_EXTERNAL_STORAGE_REQUEST_CODE = 1
     private lateinit var labels: List<String>
+    private val imageSize = 224
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -70,13 +71,7 @@ class InputImage : Fragment() {
         }
 
         binding.btnStart.setOnClickListener {
-//            val bitmap1 = (binding.ivImage1.drawable as BitmapDrawable).bitmap
-//            val bitmap2 = (binding.ivImage2.drawable as BitmapDrawable).bitmap
-//            val bitmap3 = (binding.ivImage3.drawable as BitmapDrawable).bitmap
-//
-//            processImage(binding.ivImage1, binding.tvNamaBahan1, bitmap1)
-//            processImage(binding.ivImage2, binding.tvNamaBahan2, bitmap2)
-//            processImage(binding.ivImage3, binding.tvNamaBahan3, bitmap3)
+
         }
     }
 
@@ -157,7 +152,8 @@ class InputImage : Fragment() {
                     val bitmap = BitmapFactory.decodeStream(stream)
                     binding.ivImage1.post {
                         binding.ivImage1.setImageBitmap(bitmap)
-                        bitmap?.let { processImage(binding.ivImage1, binding.tvNamaBahan1, it) }
+                        val scaledImage = Bitmap.createScaledBitmap(bitmap, imageSize, imageSize, false)
+                        scaledImage.let { processImage(binding.ivImage1, binding.tvNamaBahan1, it) }
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -172,7 +168,13 @@ class InputImage : Fragment() {
                 val bitmap = extras?.get("data") as Bitmap?
                 binding.ivImage1.post {
                     binding.ivImage1.setImageBitmap(bitmap)
-                    bitmap?.let { processImage(binding.ivImage1, binding.tvNamaBahan1, it) }
+                    val scaledImage =
+                        bitmap?.let { Bitmap.createScaledBitmap(it, imageSize, imageSize, false) }
+                    scaledImage.let {
+                        if (it != null) {
+                            processImage(binding.ivImage1, binding.tvNamaBahan1, it)
+                        }
+                    }
                 }
             }
             thread.start()
@@ -186,7 +188,8 @@ class InputImage : Fragment() {
                     val bitmap = BitmapFactory.decodeStream(stream)
                     binding.ivImage2.post {
                         binding.ivImage2.setImageBitmap(bitmap)
-                        bitmap?.let { processImage(binding.ivImage2, binding.tvNamaBahan2, it) }
+                        val scaledImage = Bitmap.createScaledBitmap(bitmap, imageSize, imageSize, false)
+                        scaledImage.let { processImage(binding.ivImage2, binding.tvNamaBahan2, it) }
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -201,7 +204,13 @@ class InputImage : Fragment() {
                 val bitmap = extras?.get("data") as Bitmap?
                 binding.ivImage2.post {
                     binding.ivImage2.setImageBitmap(bitmap)
-                    bitmap?.let { processImage(binding.ivImage2, binding.tvNamaBahan2, it) }
+                    val scaledImage =
+                        bitmap?.let { Bitmap.createScaledBitmap(it, imageSize, imageSize, false) }
+                    scaledImage.let {
+                        if (it != null) {
+                            processImage(binding.ivImage2, binding.tvNamaBahan2, it)
+                        }
+                    }
                 }
             }
             thread.start()
@@ -215,7 +224,8 @@ class InputImage : Fragment() {
                     val bitmap = BitmapFactory.decodeStream(stream)
                     binding.ivImage3.post {
                         binding.ivImage3.setImageBitmap(bitmap)
-                        bitmap?.let { processImage(binding.ivImage3, binding.tvNamaBahan3, it) }
+                        val scaledImage = Bitmap.createScaledBitmap(bitmap, imageSize, imageSize, false)
+                        scaledImage.let { processImage(binding.ivImage3, binding.tvNamaBahan3, it) }
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -230,7 +240,13 @@ class InputImage : Fragment() {
                 val bitmap = extras?.get("data") as Bitmap?
                 binding.ivImage3.post {
                     binding.ivImage3.setImageBitmap(bitmap)
-                    bitmap?.let { processImage(binding.ivImage3, binding.tvNamaBahan3, it) }
+                    val scaledImage =
+                        bitmap?.let { Bitmap.createScaledBitmap(it, imageSize, imageSize, false) }
+                    scaledImage.let {
+                        if (it != null) {
+                            processImage(binding.ivImage3, binding.tvNamaBahan3, it)
+                        }
+                    }
                 }
             }
             thread.start()
@@ -267,43 +283,30 @@ class InputImage : Fragment() {
         try {
             val model = Model.newInstance(requireContext())
 
-            val imageSize = 300
-
-            val inputFeature0 =
-                TensorBuffer.createFixedSize(intArrayOf(1, imageSize, imageSize, 3), DataType.FLOAT32)
-
-            val intValues = IntArray(image.width * image.height)
-            image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
-
+            val inputFeature0 = TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.FLOAT32)
             val byteBuffer = ByteBuffer.allocateDirect(4 * imageSize * imageSize * 3)
             byteBuffer.order(ByteOrder.nativeOrder())
+
+            val intValues = IntArray(imageSize * imageSize)
+            image.getPixels(intValues, 0, image.width, 0, 0, image.width, image.height)
 
             var pixel = 0
             for (i in 0 until imageSize) {
                 for (j in 0 until imageSize) {
-                    if (pixel < intValues.size) {
-                        val value = intValues[pixel++]
-                        byteBuffer.putFloat(((value shr 16) and 0xFF) * (1f / 255f))
-                        byteBuffer.putFloat(((value shr 8) and 0xFF) * (1f / 255f))
-                        byteBuffer.putFloat((value and 0xFF) * (1f / 255f))
-                    }
+                    val value = intValues[pixel++]
+                    byteBuffer.putFloat(((value shr 16) and 0xFF) * (1f / 255f))
+                    byteBuffer.putFloat(((value shr 8) and 0xFF) * (1f / 255f))
+                    byteBuffer.putFloat((value and 0xFF) * (1f / 255f))
                 }
             }
-
             inputFeature0.loadBuffer(byteBuffer)
 
             val outputs = model.process(inputFeature0)
             val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-
-            val confidences: FloatArray = outputFeature0.floatArray
-
-            for (i in confidences.indices) {
-                Log.d("CameraActivity", "Confidence for class $i: ${confidences[i]}")
-            }
+            val confidences = outputFeature0.floatArray
 
             var maxPos = 0
-            var maxConfidence = 0.0f
-
+            var maxConfidence = 0f
             for (i in confidences.indices) {
                 if (confidences[i] > maxConfidence) {
                     maxConfidence = confidences[i]
@@ -331,47 +334,12 @@ class InputImage : Fragment() {
                 "Kelapa",
                 "Kembang kol",
                 "Kentang",
-                "Klengkeng",
-                "Labu",
-                "Labu siam",
-                "Leci",
-                "Lemon",
-                "Lobak merah",
-                "Mangga",
-                "Melon",
-                "Mentimun",
-                "Nanas",
-                "Nangka",
-                "Nasi merah",
-                "Nasi putih",
-                "Paha bawah ayam",
-                "Paprika",
-                "Pare",
-                "Pepaya",
-                "Pir",
-                "Pisang",
-                "Pokcoy",
-                "Pork belly",
-                "Rambutan",
-                "Salmon",
-                "Sayap ayam",
-                "Semangka",
-                "Singkong",
-                "Stroberi",
-                "Tahu",
-                "Tauge",
                 "Telur",
-                "Tempe",
-                "Terong",
-                "Tomat",
-                "Ubi",
                 "Wortel"
             )
 
             val detectedClass = classes[maxPos]
-            imageView.post {
-                textView.text = detectedClass
-            }
+            textView.text = detectedClass
 
             model.close()
 
