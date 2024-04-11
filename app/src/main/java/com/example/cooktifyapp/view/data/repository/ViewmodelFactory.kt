@@ -16,9 +16,9 @@ class ViewmodelFactory private constructor(private val mAppRepository: Repositor
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(RecipeViewModel::class.java)) {
-            return RecipeViewModel(mAppRepository) as T
-        }
+//        if (modelClass.isAssignableFrom(RecipeViewModel::class.java)) {
+//            return RecipeViewModel(mAppRepository) as T
+//        }
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
 
